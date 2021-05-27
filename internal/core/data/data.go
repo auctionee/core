@@ -5,10 +5,12 @@ import (
 )
 
 type AUID string
-type InternalInfo struct {
-	TTL    time.Duration
-	AUID   AUID
-	Winner string
-	Bet    int
-}
+
 type AuctionsDump map[AUID]InternalInfo
+
+type InternalInfo struct {
+	TTL    time.Duration `json:"TTL"`
+	AUID   AUID          `json:"AUID"`
+	Winner string        `json:"Winner"`
+	Bet    int           `json:"Bet"`
+}

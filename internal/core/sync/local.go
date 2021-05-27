@@ -10,6 +10,9 @@ type LocalDump struct {
 	mu   *sync.Mutex
 	dump data.AuctionsDump
 }
+type AuctionsList struct {
+	List LocalDump `json:"List"`
+}
 
 var LocalDB = LocalDump{}
 
@@ -33,8 +36,8 @@ func (l *LocalDump) Poll() {
 	//вкачиваем на сервер
 	l.mu.Unlock()
 }
-func (l *LocalDump) GetBet(AUID data.AUID) int {
-	return l.dump[AUID].Bet
+func (l *LocalDump) GetBet(AUID data.AUID) (string, int) {
+	return l.dump[AUID].Winner, l.dump[AUID].Bet
 }
 func (l *LocalDump) SetBet(AUID data.AUID, amount int, who string) {
 	l.mu.Lock()

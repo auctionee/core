@@ -10,7 +10,9 @@ import (
 )
 
 func main() {
-	cfg := internal.Config{}
+	cfg := internal.Config{
+		Port: "8080",
+	}
 	s := server.NewServer(&cfg)
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()

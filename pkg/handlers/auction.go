@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func StartAuction(c *gin.Context) {
+func Process(c *gin.Context) {
 	request := models.NewRequest()
 	err := request.Unmarshall(c.Request.Body)
 	if err != nil {
